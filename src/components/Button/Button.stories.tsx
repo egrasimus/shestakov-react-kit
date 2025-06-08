@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "storybook/test"
 import { Button } from "./Button"
+import { ButtonSizes, ButtonVariants } from "./types"
 
 // Иконки для примеров
 const ChevronRightIcon = () => (
@@ -103,28 +104,28 @@ type Story = StoryObj<typeof meta>
 // Основные варианты
 export const Primary: Story = {
 	args: {
-		variant: "primary",
+		variant: ButtonVariants.PRIMARY,
 		children: "Primary Button",
 	},
 }
 
 export const Secondary: Story = {
 	args: {
-		variant: "secondary",
+		variant: ButtonVariants.SECONDARY,
 		children: "Secondary Button",
 	},
 }
 
 export const Danger: Story = {
 	args: {
-		variant: "danger",
+		variant: ButtonVariants.DANGER,
 		children: "Delete",
 	},
 }
 
 export const Outline: Story = {
 	args: {
-		variant: "outline",
+		variant: ButtonVariants.OUTLINE,
 		children: "Outline Button",
 	},
 }
@@ -133,9 +134,9 @@ export const Outline: Story = {
 export const Sizes: Story = {
 	render: () => (
 		<div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-			<Button size='small'>Small</Button>
-			<Button size='medium'>Medium</Button>
-			<Button size='large'>Large</Button>
+			<Button size={ButtonSizes.SMALL}>Small</Button>
+			<Button size={ButtonSizes.MEDIUM}>Medium</Button>
+			<Button size={ButtonSizes.LARGE}>Large</Button>
 		</div>
 	),
 	parameters: {
@@ -172,7 +173,7 @@ export const WithIcons: Story = {
 		<div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
 			<Button leftIcon={<PlusIcon />}>Add Item</Button>
 			<Button rightIcon={<ChevronRightIcon />}>Next</Button>
-			<Button leftIcon={<DownloadIcon />} variant='outline'>
+			<Button leftIcon={<DownloadIcon />} variant={ButtonVariants.OUTLINE}>
 				Download
 			</Button>
 		</div>
@@ -205,17 +206,17 @@ export const FullWidth: Story = {
 export const AllVariants: Story = {
 	render: () => (
 		<div style={{ display: "grid", gap: "16px", maxWidth: "300px" }}>
-			<Button variant='primary'>Primary</Button>
-			<Button variant='secondary'>Secondary</Button>
-			<Button variant='danger'>Danger</Button>
-			<Button variant='outline'>Outline</Button>
-			<Button variant='primary' disabled>
+			<Button variant={ButtonVariants.PRIMARY}>Primary</Button>
+			<Button variant={ButtonVariants.SECONDARY}>Secondary</Button>
+			<Button variant={ButtonVariants.DANGER}>Danger</Button>
+			<Button variant={ButtonVariants.OUTLINE}>Outline</Button>
+			<Button variant={ButtonVariants.PRIMARY} disabled>
 				Disabled Primary
 			</Button>
-			<Button variant='secondary' loading>
+			<Button variant={ButtonVariants.SECONDARY} loading>
 				Loading Secondary
 			</Button>
-			<Button variant='outline' leftIcon={<PlusIcon />}>
+			<Button variant={ButtonVariants.OUTLINE} leftIcon={<PlusIcon />}>
 				With Icon
 			</Button>
 		</div>
@@ -232,8 +233,8 @@ export const AllVariants: Story = {
 // Интерактивная кнопка для playground
 export const Playground: Story = {
 	args: {
-		variant: "primary",
-		size: "medium",
+		variant: ButtonVariants.PRIMARY,
+		size: ButtonSizes.MEDIUM,
 		children: "Click me!",
 		loading: false,
 		disabled: false,
